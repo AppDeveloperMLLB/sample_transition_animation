@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:sample_transition_animation/router.dart';
 
 void main() {
   runApp(const MyApp());
@@ -9,12 +11,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      routerConfig: goRouter,
     );
   }
 }
@@ -38,13 +40,46 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: Column(
           children: [
-            const PageTitleText(
-              text: "Page1",
+            _buildGoToPageButton(
+              AppRoute.noTransitionPage.name,
+              "No Transition",
             ),
-            ElevatedButton(onPressed: () {}, child: Text(""))
+            _buildGoToPageButton(
+              AppRoute.slideTransitionPage.name,
+              "Slide Transition",
+            ),
+            _buildGoToPageButton(
+              AppRoute.slideTopToBottomTransitionPage.name,
+              "SlideTopToBottomTransitionPage",
+            ),
+            _buildGoToPageButton(
+              AppRoute.fadeTransitionPage.name,
+              "FadeTransitionPage",
+            ),
+            _buildGoToPageButton(
+              AppRoute.scaleTransitionPage.name,
+              "ScaleTransitionPage",
+            ),
+            _buildGoToPageButton(
+              AppRoute.blackWhiteTransitionPage.name,
+              "BlackWhiteTransitionPage",
+            ),
+            _buildGoToPageButton(
+              AppRoute.wipeTrainsitionPage.name,
+              "WipeTransitionPage",
+            ),
           ],
         ),
       ),
+    );
+  }
+
+  Widget _buildGoToPageButton(String goName, String text) {
+    return ElevatedButton(
+      onPressed: () {
+        context.goNamed(goName);
+      },
+      child: Text(text),
     );
   }
 }
@@ -53,11 +88,13 @@ class PageTemplate extends StatelessWidget {
   final String title;
   final String buttonText;
   final VoidCallback? onPressed;
+  final Color color;
   const PageTemplate({
     super.key,
     required this.title,
     required this.buttonText,
     required this.onPressed,
+    required this.color,
   });
 
   @override
@@ -66,17 +103,20 @@ class PageTemplate extends StatelessWidget {
       appBar: AppBar(
         title: Text(title),
       ),
-      body: Center(
-        child: Column(
-          children: [
-            PageTitleText(
-              text: title,
-            ),
-            ElevatedButton(
-              onPressed: onPressed,
-              child: Text(buttonText),
-            ),
-          ],
+      backgroundColor: color,
+      body: SafeArea(
+        child: Center(
+          child: Column(
+            children: [
+              PageTitleText(
+                text: title,
+              ),
+              ElevatedButton(
+                onPressed: onPressed,
+                child: Text(buttonText),
+              ),
+            ],
+          ),
         ),
       ),
     );
