@@ -19,9 +19,10 @@ class ImageDetailPage extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: GestureDetector(
-              onVerticalDragEnd: (details) {
-                if (details.primaryVelocity! > 0) return;
-                context.pop();
+              onVerticalDragUpdate: (details) {
+                if (details.delta.dy > 0) {
+                  context.pop();
+                }
               },
               child: Container(
                 color: Colors.grey.withOpacity(0.3),
