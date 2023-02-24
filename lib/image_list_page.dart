@@ -31,7 +31,7 @@ class ImageListPage extends StatelessWidget {
             padding: const EdgeInsets.all(8),
             itemBuilder: (context, index) {
               return Item(
-                text: "$index",
+                index: index,
               );
             },
             shrinkWrap: true,
@@ -43,20 +43,22 @@ class ImageListPage extends StatelessWidget {
 }
 
 class Item extends StatelessWidget {
-  final String text;
-  const Item({super.key, required this.text});
+  final int index;
+  const Item({super.key, required this.index});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // TODO: implements to go to image detail page.
-        print("on tap");
+        context.goNamed(
+          AppRoute.imageDetailPage.name,
+          extra: index,
+        );
       },
       child: Container(
         color: Colors.grey.withOpacity(0.3),
         child: Center(
-          child: Text(text),
+          child: Text("$index"),
         ),
       ),
     );
