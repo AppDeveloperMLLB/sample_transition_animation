@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:sample_transition_animation/image_list_page.dart';
 import 'package:sample_transition_animation/main.dart';
 
 enum AppRoute {
@@ -34,6 +35,10 @@ enum AppRoute {
   wipeTrainsitionPage(
     path: '/wipeTransitionPage',
     name: 'wipeTransitionPage',
+  ),
+  imageListPage(
+    path: '/imageListPage',
+    name: 'imageListPage',
   ),
   page1(
     path: '/page1',
@@ -281,6 +286,13 @@ final goRouter = GoRouter(
         },
       ),
     ),
+    GoRoute(
+      path: AppRoute.imageListPage.path,
+      name: AppRoute.imageListPage.name,
+      builder: (context, state) {
+        return const ImageListPage();
+      },
+    )
   ],
 );
 

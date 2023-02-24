@@ -68,6 +68,10 @@ class _MyHomePageState extends State<MyHomePage> {
               AppRoute.wipeTrainsitionPage.name,
               "WipeTransitionPage",
             ),
+            _buildGoToPageButton(
+              AppRoute.imageListPage.name,
+              "ImageListPage",
+            ),
           ],
         ),
       ),
