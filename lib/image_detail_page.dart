@@ -26,7 +26,7 @@ Text("Image Detail Page"),
       body: SafeArea(
         child: Center(
           child: Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: EdgeInsets.all(16.0),
             child: Stack(
               children: [
                 Positioned.fill(
@@ -37,6 +37,7 @@ Text("Image Detail Page"),
                   bottom: 80,
                   child: GestureDetector(
                     onVerticalDragUpdate: (details) {
+print("aaa");
                       if (details.delta.dy > 0) {
                         setState(() {
                           _imagePosY += details.delta.dy;
