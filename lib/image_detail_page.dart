@@ -18,9 +18,10 @@ class _ImageDetailPageState extends State<ImageDetailPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor:
+    backgroundColor:
             _imagePosY == 0 ? Colors.blue : Colors.blue.withOpacity(0.3),
-        title: const Text("Image Detail Page"),
+        title: const 
+Text("Image Detail Page"),
       ),
       body: SafeArea(
         child: Center(

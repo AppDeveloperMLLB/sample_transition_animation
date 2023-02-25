@@ -87,9 +87,9 @@ class _ImageDetailState extends State<ImageDetail> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ThemeData()
-          .scaffoldBackgroundColor
-          .withOpacity(max(0.5, 1 - offset.dy / 200)),
+      backgroundColor: ThemeData().scaffoldBackgroundColor.withOpacity(
+            max(0.5, 1 - offset.dy / 200),
+          ),
       appBar: AppBar(
         leading: IconButton(
           icon: const Icon(
