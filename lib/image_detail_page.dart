@@ -40,6 +40,7 @@ Text("Image Detail Page"),
 print("aaa");
                       if (details.delta.dy > 0) {
                         setState(() {
+// aa
                           _imagePosY += details.delta.dy;
                         });
                       }
