@@ -21,7 +21,7 @@ class _ImageDetailPageState extends State<ImageDetailPage> {
     backgroundColor:
             _imagePosY == 0 ? Colors.blue : Colors.blue.withOpacity(0.3),
         title: const 
-Text("Image Detail Pagem"),
+Text("Image Detail Pagemf"),
       ),
       body: SafeArea(
         child: Center(
