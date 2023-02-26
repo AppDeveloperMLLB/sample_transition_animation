@@ -1,6 +1,6 @@
 name: Flutter
 
-on: [push]
+on: []
 
 jobs:
   build:
