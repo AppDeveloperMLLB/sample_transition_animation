@@ -21,25 +21,5 @@ jobs:
       - name: Analyze project source
         run: dart analyze
         
-      - name: Format code
-        run: dart format lib
-        
-      - name: Diff
-        id: diff
-        run: |
-          git add -N .
-          git diff --name-only --exit-code
-        continue-on-error: true
-
-      - name: git setting
-        run: |
-          git config user.name "$(git --no-pager log --format=format:'%an' -n 1)"
-          git config user.email "$(git --no-pager log --format=format:'%ae' -n 1)"
-          
-      - name: Commit files
-        run: |
-          git add .
-          git commit -m "Apply Format Change"
-          git pull
-          git push
-        if: steps.diff.outcome == 'failure'
+      - name: Format check
+        run: dart format lib --set-exit-if-changed --dry-run
