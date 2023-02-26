@@ -24,6 +24,21 @@ jobs:
       - name: Format code
         run: dart format lib
         
-      - uses: stefanzweifel/git-auto-commit-action@v3.0.0
-        with:
-          commit_message: Apply Format Change
+      - name: Diff
+        id: diff
+        run: |
+          git add -N .
+          git diff --name-only --exit-code
+        continue-on-error: true
+
+      - name: git setting
+        run: |
+          git config user.name "$(git --no-pager log --format=format:'%an' -n 1)"
+          git config user.email "$(git --no-pager log --format=format:'%ae' -n 1)"
+          
+      - name: Commit files
+        run: |
+          git add .
+          git commit -m "Apply Format Change" -a
+          git pull
+          git push
