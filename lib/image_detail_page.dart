@@ -18,10 +18,9 @@ class _ImageDetailPageState extends State<ImageDetailPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-    backgroundColor:
+        backgroundColor:
             _imagePosY == 0 ? Colors.blue : Colors.blue.withOpacity(0.3),
-        title: const 
-Text("Image Detail Pagemfアチョdっっdd"),
+        title: const Text("Image Detail Pagemfアチョxxxdっっdd"),
       ),
       body: SafeArea(
         child: Center(
@@ -37,7 +36,7 @@ Text("Image Detail Pagemfアチョdっっdd"),
                   bottom: 80,
                   child: GestureDetector(
                     onVerticalDragUpdate: (details) {
-print("aaa");
+                      print("aaa");
                       if (details.delta.dy > 0) {
                         setState(() {
 // aa
