@@ -22,4 +22,4 @@ jobs:
         run: dart analyze
         
       - name: Format check
-        run: dart format lib --set-exit-if-changed --dry-run
+        run: dart format lib --set-exit-if-changed
