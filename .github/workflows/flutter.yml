@@ -39,6 +39,7 @@ jobs:
       - name: Commit files
         run: |
           git add .
-          git commit -m "Apply Format Change" -a
+          git commit -m "Apply Format Change"
           git pull
           git push
+        if: steps.diff.outcome == 'failure'
