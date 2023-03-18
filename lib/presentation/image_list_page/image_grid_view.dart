@@ -1,5 +1,7 @@
+import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:sample_transition_animation/presentation/image_list_page/imaga_grid_item.dart';
+import 'package:sample_transition_animation/presentation/image_list_page/image_detail_page.dart';
 
 double imageGridWidth = 0;
 double imageGridHeight = 0;
@@ -21,12 +23,26 @@ class ImageGridView extends StatelessWidget {
       itemBuilder: (context, index) {
         return LayoutBuilder(
           builder: (context, constraints) {
-            imageGridWidth = constraints.maxWidth;
-            imageGridHeight = constraints.maxWidth;
-            return ImageGridItem(
-              index: index,
-              onTap: () {
-                onTap(index);
+            return OpenContainer(
+              openBuilder: (context, closedContainer) {
+                return ImageDetailPage(
+                  index: index,
+                  onDragEnd: () {
+                    closedContainer.call();
+                  },
+                );
+              },
+              closedShape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(0)),
+              ),
+              closedElevation: 0,
+              closedBuilder: (context, openContainer) {
+                return ImageGridItem(
+                  index: index,
+                  onTap: () {
+                    openContainer.call();
+                  },
+                );
               },
             );
           },
